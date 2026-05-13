@@ -1,1 +1,61 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MM Promoter | Marketing Manager & Decisioning Tool</title>
+    <style>
+        :root {
+            --bg-color: #0b1a2d;
+            --accent-color: #00d4ff;
+            --text-muted: #8a9eb5;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif; 
+            background-color: var(--bg-color); 
+            color: #ffffff; 
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .container { max-width: 800px; }
+        .logo { 
+            width: 140px; 
+            height: 140px;
+            border-radius: 32px; 
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+        .subtitle { font-size: 1.2rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 10px; font-weight: 600; }
+        p { color: var(--text-muted); font-size: 1.15rem; line-height: 1.6; margin: 30px auto; max-width: 500px; }
+        .badge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 40px; }
+        .badge { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; font-size: 0.9rem; color: #fff; }
+        .cta-button { background-color: var(--accent-color); color: var(--bg-color); padding: 18px 36px; border-radius: 14px; text-decoration: none; font-weight: 700; display: inline-block; transition: transform 0.2s ease; }
+        .footer { margin-top: 60px; font-size: 0.85rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="MMPromoterlogo.png" alt="MM Promoter Logo" class="logo">
+        <h1>MM Promoter</h1>
+        <div class="subtitle">Marketing Manager & Decisioning Tool</div>
+        <p>A specialized instrument for small businesses and makers. Catch your metrics, tune your signal, and optimize for the age of AEO.</p>
+        <div class="badge-grid">
+            <div class="badge">📡 Metrics Catcher</div>
+            <div class="badge">⚙️ Decision Engine</div>
+            <div class="badge">🌐 AEO Propagation</div>
+        </div>
+        <a href="#" class="cta-button">Coming June 2026</a>
+        <div class="footer">
+            Built for Apple Platforms & Small Business Sovereignty.<br>
+            &copy; 2026 Garden Shed Clay LLC.
+        </div>
+    </div>
+</body>
+</html>
