@@ -470,21 +470,26 @@
         </p>
 
         <div class="hero-actions">
-            <a
-                href="https://app.mmpromoter.com"
-                class="button button-primary"
-            >
-                Launch MM Promoter
-            </a>
+    <a
+        href="/diagnostic/"
+        class="button button-primary"
+        onclick="gtag('event', 'free_diagnostic_click', {
+            location: 'homepage_hero',
+            destination: '/diagnostic/',
+            page: 'homepage'
+        });"
+    >
+        Run a Free Diagnostic
+    </a>
 
-            <a
-                href="#intelligence"
-                class="button button-secondary"
-            >
-                See What It Does
-            </a>
-        </div>
-
+    <a
+        href="#intelligence"
+        class="button button-secondary"
+    >
+        See What It Does
+    </a>
+</div>
+        
     </header>
 
 
