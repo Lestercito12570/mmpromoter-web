@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Free Marketing Diagnostic | MM Promoter</title>
+
+    <meta
+        name="description"
+        content="Run a free MM Promoter diagnostic to see how your website and social presence appear across search, AI discovery, and marketing channels."
+    >
+
+    <link rel="canonical" href="https://mmpromoter.com/diagnostic/">
+
+    <style>
+        :root {
+            --bg-color: #0b1a2d;
+            --bg-secondary: #0e2239;
+            --card-bg: rgba(255,255,255,0.045);
+            --accent-color: #00d4ff;
+            --text-main: #ffffff;
+            --text-muted: #8fa6bd;
+            --border-color: rgba(255,255,255,0.09);
+            --max-width: 900px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                "Segoe UI", sans-serif;
+            background: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .nav {
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(11,26,45,0.94);
+        }
+
+        .nav-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .brand img {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 80px 28px 100px;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 48px;
+        }
+
+        .eyebrow {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.13em;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.8rem, 7vw, 4.8rem);
+            line-height: 1.05;
+            letter-spacing: -0.045em;
+        }
+
+        .intro p {
+            max-width: 680px;
+            margin: 24px auto 0;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .diagnostic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .diagnostic-card {
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            border-radius: 22px;
+            padding: 30px;
+        }
+
+        .diagnostic-card h2 {
+            margin: 0;
+            font-size: 1.45rem;
+        }
+
+        .diagnostic-card p {
+            color: var(--text-muted);
+            margin: 12px 0 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.055);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--accent-color);
+        }
+
+        input::placeholder {
+            color: #70879e;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 14px;
+            padding: 15px 18px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--accent-color);
+            color: var(--bg-color);
+            font-size: 0.96rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.45;
+        }
+
+        .microcopy {
+            margin-top: 14px !important;
+            font-size: 0.82rem;
+        }
+
+        .status {
+            display: none;
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: rgba(0,212,255,0.08);
+            border: 1px solid rgba(0,212,255,0.2);
+            color: #dcebf5;
+            font-size: 0.9rem;
+        }
+
+        .proof {
+            margin-top: 42px;
+            padding: 28px;
+            border-radius: 18px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .proof strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .proof span {
+            color: var(--text-muted);
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 32px 28px;
+            color: var(--text-muted);
+            text-align: center;
+            font-size: 0.84rem;
+        }
+
+        @media (max-width: 720px) {
+            .diagnostic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding-top: 55px;
+            }
+        }
+    </style>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEW14GHKRM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-NEW14GHKRM');
+    </script>
+</head>
+
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="/" class="brand">
+            <img src="/MMPromoterlogo.png" alt="MM Promoter logo">
+            <span>MM Promoter</span>
+        </a>
+
+        <a href="/" class="back-link">← Back to MM Promoter</a>
+    </div>
+</nav>
+
+<main>
+
+    <div class="intro">
+        <div class="eyebrow">Free Marketing Diagnostic</div>
+
+        <h1>See what MM Promoter sees.</h1>
+
+        <p>
+            Get a quick look at how your business appears across the signals
+            that influence search, AI visibility, and marketing performance.
+            No MM Promoter account required.
+        </p>
+    </div>
+
+    <div class="diagnostic-grid">
+
+        <div class="diagnostic-card">
+            <h2>🌐 Website Diagnostic</h2>
+
+            <p>
+                Check your website's discoverability, metadata, structure,
+                search readiness, and AI visibility signals.
+            </p>
+
+            <form id="website-form">
+                <label for="website-url">Website address</label>
+
+                <input
+                    id="website-url"
+                    type="url"
+                    placeholder="https://yourbusiness.com"
+                    required
+                >
+
+                <button type="submit">
+                    Check My Website
+                </button>
+            </form>
+
+            <div id="website-status" class="status"></div>
+
+            <p class="microcopy">
+                Free diagnostic. No account required.
+            </p>
+        </div>
+
+
+        <div class="diagnostic-card">
+            <h2>#️⃣ Social Hashtag Diagnostic</h2>
+
+            <p>
+                Explore hashtag visibility and discover signals that may affect
+                how your content is being found and positioned.
+            </p>
+
+            <form id="hashtag-form">
+                <label for="hashtag">Hashtag</label>
+
+                <input
+                    id="hashtag"
+                    type="text"
+                    placeholder="#yourbrand"
+                    required
+                >
+
+                <button type="submit">
+                    Check My Hashtag
+                </button>
+            </form>
+
+            <div id="hashtag-status" class="status"></div>
+
+            <p class="microcopy">
+                Use a brand, product, campaign, or category hashtag.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="proof">
+        <strong>This is a preview of MM Promoter's marketing intelligence.</strong>
+
+        <span>
+            Full MM Promoter analysis connects website, performance,
+            competitive, content, campaign, and AI visibility evidence to help
+            determine what deserves your attention next.
+        </span>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 Garden Shed Clay LLC. MM Promoter.
+</footer>
+
+
+<script>
+    /*
+        The public diagnostic backend will be connected here.
+
+        We intentionally do NOT simulate results or expose API keys in this page.
+        The forms currently validate input and track diagnostic starts.
+    */
+
+    document.getElementById('website-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const url = document.getElementById('website-url').value;
+        const status = document.getElementById('website-status');
+
+        if (typeof gtag === 'function') {
+            gtag('event', 'diagnostic_started', {
+                diagnostic_type: 'website',
+                page: 'public_diagnostic'
+            });
+        }
+
+        status.style.display = 'block';
+        status.textContent =
+            'Website diagnostic connection is being prepared. Your website was not submitted yet.';
+    });
+
+
+    document.getElementById('hashtag-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const hashtag = document.getElementById('hashtag').value;
+        const status = document.getElementById('hashtag-status');
+
+        if (typeof gtag === 'function') {
+            gtag('event', 'diagnostic_started', {
+                diagnostic_type: 'hashtag',
+                page: 'public_diagnostic'
+            });
+        }
+
+        status.style.display = 'block';
+        status.textContent =
+            'Social diagnostic connection is being prepared. Your hashtag was not submitted yet.';
+    });
+</script>
+
+</body>
+</html>
