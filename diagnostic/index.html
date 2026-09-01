@@ -365,18 +365,63 @@
 
 
 <script>
-    /*
-        The public diagnostic backend will be connected here.
+    async function runDiagnostic(type, target, statusElement, buttonElement) {
+        statusElement.style.display = 'block';
+        statusElement.textContent = 'Running diagnostic...';
 
-        We intentionally do NOT simulate results or expose API keys in this page.
-        The forms currently validate input and track diagnostic starts.
-    */
+        buttonElement.disabled = true;
 
-    document.getElementById('website-form').addEventListener('submit', function(e) {
+        try {
+            const response = await fetch(
+                'https://app.mmpromoter.com/api/functions/runDiagnosticAudit',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        type: type,
+                        target: target.trim()
+                    })
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    `Audit request failed with status ${response.status}.`
+                );
+            }
+
+            const resultData = await response.json();
+
+            console.log('Diagnostic result:', resultData);
+
+            if (resultData.status !== 'Success') {
+                throw new Error(
+                    resultData.error || 'Diagnostic computation failed.'
+                );
+            }
+
+            statusElement.textContent =
+                'Diagnostic completed successfully. Check the browser console for the returned result.';
+
+        } catch (error) {
+            console.error('Diagnostic error:', error);
+
+            statusElement.textContent =
+                `Diagnostic could not run: ${error.message}`;
+        } finally {
+            buttonElement.disabled = false;
+        }
+    }
+
+
+    document.getElementById('website-form').addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const url = document.getElementById('website-url').value;
         const status = document.getElementById('website-status');
+        const button = this.querySelector('button[type="submit"]');
 
         if (typeof gtag === 'function') {
             gtag('event', 'diagnostic_started', {
@@ -385,17 +430,16 @@
             });
         }
 
-        status.style.display = 'block';
-        status.textContent =
-            'Website diagnostic connection is being prepared. Your website was not submitted yet.';
+        await runDiagnostic('web', url, status, button);
     });
 
 
-    document.getElementById('hashtag-form').addEventListener('submit', function(e) {
+    document.getElementById('hashtag-form').addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const hashtag = document.getElementById('hashtag').value;
         const status = document.getElementById('hashtag-status');
+        const button = this.querySelector('button[type="submit"]');
 
         if (typeof gtag === 'function') {
             gtag('event', 'diagnostic_started', {
@@ -404,11 +448,8 @@
             });
         }
 
-        status.style.display = 'block';
-        status.textContent =
-            'Social diagnostic connection is being prepared. Your hashtag was not submitted yet.';
+        await runDiagnostic('hashtag', hashtag, status, button);
     });
 </script>
-
 </body>
 </html>
