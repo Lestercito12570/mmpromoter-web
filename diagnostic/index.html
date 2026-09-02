@@ -365,14 +365,31 @@
 
 
 <script>
+
     async function runDiagnostic(type, target, statusElement, buttonElement) {
-        statusElement.style.display = 'block';
-        statusElement.textContent = 'Running diagnostic...';
+    statusElement.style.display = 'block';
+    statusElement.textContent = 'Running diagnostic...';
 
-        buttonElement.disabled = true;
+    buttonElement.disabled = true;
 
-        try {
-            const response = await fetch(
+    try {
+        let response;
+
+        if (type === 'web') {
+            response = await fetch(
+                'https://mmpromoter-diagnosticaudit.lester-morris.workers.dev',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        target: target.trim()
+                    })
+                }
+            );
+        } else {
+            response = await fetch(
                 'https://app.mmpromoter.com/api/functions/runDiagnosticAudit',
                 {
                     method: 'POST',
@@ -385,37 +402,38 @@
                     })
                 }
             );
-
-            if (!response.ok) {
-                throw new Error(
-                    `Audit request failed with status ${response.status}.`
-                );
-            }
-
-            const resultData = await response.json();
-
-            console.log('Diagnostic result:', resultData);
-
-            if (resultData.status !== 'Success') {
-                throw new Error(
-                    resultData.error || 'Diagnostic computation failed.'
-                );
-            }
-
-            statusElement.textContent =
-                'Diagnostic completed successfully. Check the browser console for the returned result.';
-
-        } catch (error) {
-            console.error('Diagnostic error:', error);
-
-            statusElement.textContent =
-                `Diagnostic could not run: ${error.message}`;
-        } finally {
-            buttonElement.disabled = false;
         }
+
+        const resultData = await response.json();
+
+        console.log('Diagnostic result:', resultData);
+
+        if (!response.ok) {
+            throw new Error(
+                resultData.error ||
+                `Audit request failed with status ${response.status}.`
+            );
+        }
+
+        if (resultData.status !== 'Success') {
+            throw new Error(
+                resultData.error || 'Diagnostic computation failed.'
+            );
+        }
+
+        statusElement.textContent =
+            'Diagnostic completed successfully.';
+
+    } catch (error) {
+        console.error('Diagnostic error:', error);
+
+        statusElement.textContent =
+            `Diagnostic could not run: ${error.message}`;
+    } finally {
+        buttonElement.disabled = false;
     }
-
-
+}
+    
     document.getElementById('website-form').addEventListener('submit', async function(e) {
         e.preventDefault();
 
