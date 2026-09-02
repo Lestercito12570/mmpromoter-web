@@ -202,6 +202,108 @@
             font-size: 0.9rem;
         }
 
+.results {
+    display: none;
+    margin-top: 24px;
+}
+
+.results-card {
+    padding: 26px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid var(--border-color);
+}
+
+.results-score {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.results-score-number {
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--accent-color);
+}
+
+.results-score-label {
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+.results-headline {
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.dimension-list {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.dimension-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dimension-name {
+    color: #dcebf5;
+}
+
+.dimension-score {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.results-section-title {
+    font-size: 1.1rem;
+    margin: 0 0 14px;
+}
+
+.priority-card {
+    padding: 18px;
+    margin-top: 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid var(--border-color);
+}
+
+.priority-number {
+    color: var(--accent-color);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.priority-area {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin-top: 4px;
+}
+
+.priority-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.priority-description {
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-size: 0.92rem;
+}
+
+.priority-action {
+    margin-top: 12px;
+    font-size: 0.9rem;
+}        
         .proof {
             margin-top: 42px;
             padding: 28px;
@@ -307,7 +409,8 @@
             </form>
 
             <div id="website-status" class="status"></div>
-
+<div id="website-results" class="results"></div>
+            
             <p class="microcopy">
                 Free diagnostic. No account required.
             </p>
@@ -366,6 +469,109 @@
 
 <script>
 
+function renderWebsiteResults(data) {
+    const resultsElement =
+        document.getElementById('website-results');
+
+    const health = data.visibilityHealth;
+
+    if (!health) {
+        resultsElement.style.display = 'none';
+        return;
+    }
+
+    const dimensions = health.dimensions || {};
+    const priorities =
+        health.interpretation?.priorities || [];
+
+    const dimensionLabels = {
+        technicalAccessibility: 'Technical Accessibility',
+        searchPageClarity: 'Search & Page Clarity',
+        businessEntityUnderstanding: 'Business & Entity Understanding',
+        discoverySharingSignals: 'Discovery & Sharing Signals',
+        contentExperienceQuality: 'Content & Experience Quality'
+    };
+
+    const dimensionRows =
+        Object.entries(dimensions)
+            .map(([key, value]) => `
+                <div class="dimension-row">
+                    <span class="dimension-name">
+                        ${dimensionLabels[key] || key}
+                    </span>
+                    <span class="dimension-score">
+                        ${value.score}/${value.max}
+                    </span>
+                </div>
+            `)
+            .join('');
+
+    const priorityCards =
+        priorities.length
+            ? priorities.map(item => `
+                <div class="priority-card">
+                    <div class="priority-number">
+                        PRIORITY ${item.priority}
+                    </div>
+
+                    <div class="priority-area">
+                        ${item.area}
+                    </div>
+
+                    <div class="priority-title">
+                        ${item.title}
+                    </div>
+
+                    <div class="priority-description">
+                        ${item.whatThisMeans}
+                    </div>
+
+                    <div class="priority-action">
+                        <strong>Recommended action:</strong>
+                        ${item.recommendedAction}
+                    </div>
+                </div>
+            `).join('')
+            : `
+                <p class="microcopy">
+                    No major priorities were identified.
+                    Your site is in strong shape.
+                </p>
+            `;
+
+    resultsElement.innerHTML = `
+        <div class="results-card">
+
+            <div class="results-score">
+                <div class="results-score-number">
+                    ${health.overall.score}
+                </div>
+
+                <div class="results-score-label">
+                    Visibility Health / ${health.overall.max}
+                </div>
+            </div>
+
+            <div class="results-headline">
+                ${health.interpretation?.headline || ''}
+            </div>
+
+            <div class="dimension-list">
+                ${dimensionRows}
+            </div>
+
+            <h3 class="results-section-title">
+                What deserves your attention
+            </h3>
+
+            ${priorityCards}
+
+        </div>
+    `;
+
+    resultsElement.style.display = 'block';
+}
+    
     async function runDiagnostic(type, target, statusElement, buttonElement) {
     statusElement.style.display = 'block';
     statusElement.textContent = 'Running diagnostic...';
@@ -421,9 +627,13 @@
             );
         }
 
-        statusElement.textContent =
-            'Diagnostic completed successfully.';
+statusElement.textContent =
+    'Diagnostic completed successfully.';
 
+if (type === 'web') {
+    renderWebsiteResults(resultData);
+}
+        
     } catch (error) {
         console.error('Diagnostic error:', error);
 
