@@ -652,22 +652,7 @@ if (type === 'web') {
     });
 
 
-    document.getElementById('hashtag-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
 
-        const hashtag = document.getElementById('hashtag').value;
-        const status = document.getElementById('hashtag-status');
-        const button = this.querySelector('button[type="submit"]');
-
-        if (typeof gtag === 'function') {
-            gtag('event', 'diagnostic_started', {
-                diagnostic_type: 'hashtag',
-                page: 'public_diagnostic'
-            });
-        }
-
-        await runDiagnostic('hashtag', hashtag, status, button);
-    });
 </script>
 </body>
 </html>
