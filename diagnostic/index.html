@@ -550,14 +550,26 @@ function renderWebsiteResults(data) {
                 ${dimensionRows}
             </div>
 
-            <h3 class="results-section-title">
-                What deserves your attention
-            </h3>
+<h3 class="results-section-title">
+    What deserves your attention
+</h3>
 
-            ${priorityCards}
+${priorityCards}
 
-        </div>
-    `;
+<div style="margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border-color);">
+    <h3 class="results-section-title">
+        What MM Promoter can help you do next
+    </h3>
+
+    <p class="priority-description">
+        MM Promoter helps turn findings like these into prioritized marketing
+        actions, content recommendations, competitive insight, and ongoing
+        visibility tracking—so you can focus on what deserves your attention next.
+    </p>
+</div>
+
+</div>
+`;
 
     resultsElement.style.display = 'block';
 }
