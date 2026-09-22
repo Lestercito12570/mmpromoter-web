@@ -241,7 +241,9 @@
     .dark-section .section-kicker { color: var(--cyan); }
     .dark-section .lede { color: #a8bbce; }
     .showcase-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: center; }
-    .product-frame { min-height: 420px; padding: 15px; border: 1px solid rgba(255,255,255,.15); border-radius: 27px; background: rgba(255,255,255,.05); box-shadow: 0 35px 80px rgba(0,0,0,.25); }
+    .product-frame { margin: 0; padding: 15px; border: 1px solid rgba(255,255,255,.15); border-radius: 27px; background: rgba(255,255,255,.05); box-shadow: 0 35px 80px rgba(0,0,0,.25); }
+    .product-visual { display: block; width: 100%; height: auto; border-radius: 18px; }
+    .product-caption { margin: 13px 8px 2px; color: #9eb3c7; font-size: .82rem; text-align: center; }
     .video-placeholder { height: 100%; min-height: 390px; display: grid; place-items: center; border: 1px dashed rgba(255,255,255,.33); border-radius: 18px; background: linear-gradient(145deg, rgba(255,255,255,.05), rgba(4,201,238,.05)); text-align: center; }
     .play { width: 72px; height: 72px; display: grid; place-items: center; margin: 0 auto 18px; border-radius: 50%; background: var(--cyan); color: var(--ink); font-size: 1.35rem; box-shadow: 0 0 0 10px rgba(4,201,238,.1); }
     .video-placeholder strong { display: block; font-size: 1.05rem; }
@@ -447,15 +449,10 @@
           <p class="lede">MM Promoter identifies the strongest opportunity, shows the evidence behind it, helps turn it into action, and measures what happened next.</p>
           <p class="annotation">Here's where all that information becomes useful.</p>
         </div>
-        <div class="product-frame">
-          <div class="video-placeholder">
-            <div>
-              <div class="play" aria-hidden="true">▶</div>
-              <strong>Product demonstration placeholder</strong>
-              <span>Add a 45–60 second captioned recording: signals → recommendation → action → measured result.</span>
-            </div>
-          </div>
-        </div>
+        <figure class="product-frame" id="strategic-command-example">
+          <img class="product-visual" src="images/mm-promoter-strategic-command-clear-next-step.png" alt="MM Promoter Strategic Command answering what to focus on first with a clear recommendation, explanation, and next action">
+          <figcaption class="product-caption">Ask a simple question. Get a clear recommendation, the reason behind it, and a useful next step.</figcaption>
+        </figure>
       </div>
     </section>
 
