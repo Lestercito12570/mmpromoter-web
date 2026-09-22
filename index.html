@@ -169,7 +169,7 @@
     .hero-note { position: relative; display: inline-block; margin: 28px 0 0 26px; color: #465a70; font-family: "Bradley Hand", "Segoe Print", cursive; font-size: 1.05rem; transform: rotate(-2deg); }
     .hero-note::before { content: "↖"; position: absolute; left: -26px; top: -12px; color: var(--cyan-dark); font-size: 1.5rem; }
 
-    .recommendation-stage { position: relative; min-height: 520px; display: grid; place-items: center; }
+    .recommendation-stage { position: relative; min-height: 730px; display: grid; place-items: center; padding-top: 88px; }
     .signal-orbit { position: absolute; width: 460px; height: 460px; border: 1px solid rgba(0, 127, 154, .14); border-radius: 50%; animation: breathe 5s ease-in-out infinite; }
     .signal-orbit::before, .signal-orbit::after { content: ""; position: absolute; border: 1px solid rgba(0, 127, 154, .12); border-radius: 50%; inset: 42px; }
     .signal-orbit::after { inset: 92px; }
@@ -189,11 +189,39 @@
     .meta-item span { display: block; color: var(--muted); font-size: .72rem; }
     .meta-item strong { font-size: .9rem; }
     .placeholder-flag { display: inline-flex; margin-top: 18px; padding: 7px 10px; border: 1px dashed #90a2b4; border-radius: 8px; color: #61758a; background: #fff; font-size: .7rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
-    .signal-chip { position: absolute; z-index: 3; padding: 10px 13px; border: 1px solid var(--line); border-radius: 999px; background: #fff; box-shadow: 0 12px 30px rgba(11, 26, 45, .1); font-size: .78rem; font-weight: 750; animation: float 5s ease-in-out infinite; }
-    .signal-chip.one { top: 12%; left: 1%; }
-    .signal-chip.two { right: 0; top: 21%; animation-delay: -1.7s; }
-    .signal-chip.three { left: 5%; bottom: 12%; animation-delay: -3.2s; }
-    @keyframes float { 50% { transform: translateY(-9px); } }
+    .signal-fragment {
+      --fragment-color: var(--cyan);
+      position: absolute;
+      z-index: 3;
+      width: 225px;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 17px 16px 19px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--fragment-color);
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 14px 32px rgba(11, 26, 45, .1);
+    }
+    .signal-fragment::after {
+      content: "";
+      position: absolute;
+      width: 42px;
+      height: 28px;
+      border-bottom: 2px solid var(--fragment-color);
+      opacity: .9;
+    }
+    .signal-fragment.one { top: 8px; left: -22px; }
+    .signal-fragment.one::after { right: -38px; bottom: -16px; transform: rotate(30deg); }
+    .signal-fragment.two { --fragment-color: #4c55d7; top: 24px; right: -30px; }
+    .signal-fragment.two::after { left: -38px; bottom: -16px; transform: rotate(-30deg); }
+    .signal-fragment.three { --fragment-color: #16a36a; left: -12px; bottom: 0; }
+    .signal-fragment.three::after { right: -38px; top: -16px; transform: rotate(-30deg); }
+    .fragment-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--fragment-color) 13%, white); color: var(--fragment-color); font-size: 1.15rem; font-weight: 900; }
+    .fragment-label { display: block; margin-bottom: 3px; color: var(--fragment-color); font-size: .68rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .fragment-finding { display: block; color: var(--ink); font-size: .83rem; font-weight: 800; line-height: 1.25; }
 
     .proof-bar { border-block: 1px solid var(--line); background: #fff; }
     .proof-inner { min-height: 92px; display: flex; align-items: center; justify-content: center; gap: 32px; color: var(--muted); font-size: .84rem; text-align: center; }
@@ -290,7 +318,7 @@
     @media (max-width: 950px) {
       .hero-grid, .problem-grid, .showcase-grid, .founder-grid, .diagnostic-grid { grid-template-columns: 1fr; }
       .hero-grid { gap: 35px; }
-      .recommendation-stage { min-height: 500px; }
+      .recommendation-stage { min-height: 730px; }
       .outcome-grid, .story-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: repeat(2, 1fr); gap: 34px; }
       .story-head { display: block; }
@@ -305,11 +333,14 @@
       .brand span { display: none; }
       .hero { padding: 67px 0 55px; }
       h1 { font-size: clamp(3.2rem, 17vw, 5rem); }
-      .recommendation-stage { min-height: 510px; }
-      .signal-orbit { width: 390px; height: 390px; }
-      .signal-chip.one { left: 0; top: 3%; }
-      .signal-chip.two { right: 0; top: 10%; }
-      .signal-chip.three { left: 2%; bottom: 1%; }
+      .recommendation-stage { min-height: auto; display: flex; flex-direction: column; gap: 12px; padding-top: 20px; }
+      .signal-orbit { width: 390px; height: 390px; top: 190px; }
+      .signal-fragment { position: relative; inset: auto !important; width: min(100%, 430px); }
+      .signal-fragment::after { display: none; }
+      .signal-fragment.one { order: 1; }
+      .signal-fragment.two { order: 2; }
+      .signal-fragment.three { order: 3; }
+      .recommendation-card { order: 4; }
       .proof-inner { padding: 24px 0; flex-direction: column; gap: 9px; }
       .proof-divider { display: none; }
       .steps { grid-template-columns: 1fr; }
@@ -351,9 +382,18 @@
 
         <div class="recommendation-stage" aria-label="Example MM Promoter recommendation">
           <div class="signal-orbit" aria-hidden="true"></div>
-          <div class="signal-chip one">Search opportunity</div>
-          <div class="signal-chip two">Competitor gap</div>
-          <div class="signal-chip three">Campaign result</div>
+          <div class="signal-fragment one">
+            <span class="fragment-icon" aria-hidden="true">⌕</span>
+            <span><span class="fragment-label">Search</span><span class="fragment-finding">Your future customers are asking this question</span></span>
+          </div>
+          <div class="signal-fragment two">
+            <span class="fragment-icon" aria-hidden="true">▥</span>
+            <span><span class="fragment-label">Competitors</span><span class="fragment-finding">Three competitors overlook it</span></span>
+          </div>
+          <div class="signal-fragment three">
+            <span class="fragment-icon" aria-hidden="true">↗</span>
+            <span><span class="fragment-label">Past results</span><span class="fragment-finding">Similar topics worked well</span></span>
+          </div>
           <article class="recommendation-card">
             <div class="card-top">
               <span class="live-pill">Next best action</span>
