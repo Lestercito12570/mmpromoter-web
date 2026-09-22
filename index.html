@@ -137,6 +137,7 @@
       color: var(--white);
     }
     .nav-cta { padding: 10px 17px; border-radius: 999px; }
+    .nav-app { padding: 9px 16px; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink) !important; }
 
     .hero {
       position: relative;
@@ -298,7 +299,10 @@
     @media (max-width: 680px) {
       .shell { width: min(calc(100% - 30px), var(--max)); }
       .section { padding: 78px 0; }
-      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-links { gap: 8px; }
+      .nav-links a:not(.nav-cta):not(.nav-app) { display: none; }
+      .nav-cta, .nav-app { padding: 8px 11px; font-size: .76rem; }
+      .brand span { display: none; }
       .hero { padding: 67px 0 55px; }
       h1 { font-size: clamp(3.2rem, 17vw, 5rem); }
       .recommendation-stage { min-height: 510px; }
@@ -325,7 +329,8 @@
         <a href="#how">How it works</a>
         <a href="#stories">Stories</a>
         <a href="#about">About</a>
-        <a class="nav-cta" href="/diagnostic/">Free diagnostic</a>
+        <a class="nav-app" href="https://app.mmpromoter.com">Launch App</a>
+        <a class="nav-cta" href="/diagnostic/">Find My Opportunities</a>
       </div>
     </div>
   </nav>
