@@ -115,8 +115,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid rgba(11, 26, 45, .08);
-      background: rgba(251, 251, 253, .9);
+      border-bottom: 1px solid rgba(4, 201, 238, .24);
+      background: rgba(11, 26, 45, .97);
+      box-shadow: 0 8px 24px rgba(11, 26, 45, .12);
       backdrop-filter: blur(18px);
     }
     .nav-inner {
@@ -126,18 +127,18 @@
       justify-content: space-between;
       gap: 24px;
     }
-    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; text-decoration: none; }
+    .brand { display: flex; align-items: center; gap: 11px; color: #fff; font-weight: 800; text-decoration: none; }
     .brand img { width: 40px; height: 40px; border-radius: 11px; box-shadow: 0 7px 18px rgba(11, 26, 45, .12); }
     .nav-links { display: flex; align-items: center; gap: 26px; font-size: .92rem; font-weight: 650; }
     .nav-links a { text-decoration: none; }
-    .nav-links a:not(.nav-cta) { color: var(--ink-soft); }
+    .nav-links a:not(.nav-cta):not(.nav-app) { color: #c4d2df; }
     .nav-cta, .button-primary {
       border: 1px solid var(--ink);
       background: var(--ink);
       color: var(--white);
     }
-    .nav-cta { padding: 10px 17px; border-radius: 999px; }
-    .nav-app { padding: 9px 16px; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink) !important; }
+    .nav-cta { padding: 10px 17px; border-color: var(--cyan); border-radius: 999px; background: var(--cyan); color: var(--ink); }
+    .nav-app { padding: 9px 16px; border: 1px solid rgba(255,255,255,.78); border-radius: 999px; background: transparent; color: #fff !important; }
 
     .hero {
       position: relative;
