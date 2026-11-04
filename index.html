@@ -145,20 +145,26 @@
       overflow: hidden;
       padding: 98px 0 88px;
       background:
-        radial-gradient(circle at 79% 27%, rgba(4, 201, 238, .18), transparent 29%),
-        radial-gradient(circle at 7% 88%, rgba(88, 171, 202, .18), transparent 28%),
-        linear-gradient(180deg, #ffffff 0%, #f7fbfd 43%, #e2f0f5 100%);
+        radial-gradient(ellipse at 76% 27%, rgba(21, 94, 239, .65), transparent 48%),
+        radial-gradient(ellipse at 12% 87%, rgba(4, 201, 238, .22), transparent 43%),
+        linear-gradient(125deg, #0b1a2d 0%, #102e66 53%, #0c2350 100%);
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       opacity: .24;
-      background-image: radial-gradient(rgba(11, 26, 45, .16) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255, 255, 255, .22) 1px, transparent 1px);
       background-size: 26px 26px;
       mask-image: linear-gradient(to right, transparent, black 58%, transparent);
       pointer-events: none;
     }
+    /* Keep hero copy legible on the deeper blue; recommendation cards retain their original styling. */
+    .hero h1, .hero-kicker { color: #fff; }
+    .hero-copy { color: #dce8f8 !important; }
+    .hero-diagnostic-description { color: #c9d9ee !important; }
+    .hero-note { color: #dce8f8 !important; }
+    .hero-note::before { color: #65d8ed !important; }
     .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; gap: 76px; align-items: center; }
     .hero-kicker { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 24px; font-size: .77rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
     .hero-kicker::before { content: ""; width: 28px; height: 3px; border-radius: 9px; background: var(--cyan); }
