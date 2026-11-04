@@ -273,6 +273,12 @@
     .outcome-number { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 44px; border-radius: 14px; background: var(--ink); color: var(--cyan); font-weight: 850; }
     .outcome-card p { color: var(--muted); }
 
+    .how-electric { position: relative; overflow: hidden; background: linear-gradient(120deg, #073d94 0%, #0757bc 52%, #073c86 100%); color: #fff; }
+    .how-electric::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 85% 10%, rgba(57, 215, 255, .20), transparent 44%); }
+    .how-electric > .shell { position: relative; z-index: 1; }
+    .how-electric .section-kicker, .how-electric .step-number, .how-electric .step:not(:last-child)::after { color: #8ceaff; }
+    .how-electric .lede, .how-electric .step p { color: #e0edff; }
+    .how-electric h2, .how-electric .step h3 { color: #fff; }
     .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; }
     .step { position: relative; padding: 0 28px 0 0; }
     .step:not(:last-child)::after { content: "→"; position: absolute; right: 12px; top: 8px; color: var(--cyan-dark); font-size: 1.4rem; }
@@ -498,7 +504,7 @@
       </div>
     </section>
 
-    <section class="section" id="how">
+    <section class="section how-electric" id="how">
       <div class="shell reveal">
         <p class="section-kicker">How it works</p>
         <h2>A smarter plan, week after week.</h2>
