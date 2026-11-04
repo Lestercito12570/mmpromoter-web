@@ -333,6 +333,8 @@
     .story-copy { padding: 25px; }
     .story-audit-preview { display: block; width: 100%; padding: 12px; border: 0; border-bottom: 1px solid var(--line); background: #f3f6fa; cursor: zoom-in; color: var(--ink-soft); text-align: center; }
     .story-audit-preview img { display: block; width: 100%; height: 230px; object-fit: contain; object-position: top center; border-radius: 8px; }
+    .story-audit-inline { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; }
+    .story-audit-inline img { height: auto; max-height: 540px; }
     .story-audit-preview span { display: block; padding-top: 8px; font-size: .8rem; font-weight: 750; }
     .story-audit-preview:hover span, .story-audit-preview:focus-visible span { text-decoration: underline; }
     .story-audit-preview:focus-visible { outline: 3px solid var(--cyan-dark); outline-offset: -3px; }
@@ -582,10 +584,7 @@
               </blockquote></div>
           </article>
           <article class="story-card">
-            <button class="story-audit-preview" type="button" aria-haspopup="dialog" aria-label="Enlarge A Republic to Keep diagnostic audit screenshot" data-benefit-image="images/artk-diagnostic-stitched.png" data-benefit-title="A Republic to Keep — Diagnostic Audit" data-benefit-description="The actual MM-Promoter diagnostic: a 98/100 website visibility health score, the heading-structure finding, and an option to have MM-Promoter prepare a proposed fix.">
-              <img src="images/artk-diagnostic-stitched.png" alt="Stitched MM-Promoter diagnostic audit for A Republic to Keep showing the 98/100 score, audit findings, and an option to prepare a fix" loading="lazy" decoding="async">
-              <span>Explore the actual audit screenshot ↗</span>
-            </button>
+            <div class="story-image has-logo"><img class="story-logo artk" src="images/a-republic-to-keep-logo.webp" alt="A Republic to Keep Philadelphia logo" width="1024" height="1024" loading="lazy"></div>
             <div class="story-copy"><span class="story-type">A Republic to Keep — Website Visibility Case Study</span><h3>A strong website. One opportunity to make it even better.</h3>
               <p><a href="https://arepublictokeep.com" target="_blank" rel="noopener noreferrer">A Republic to Keep</a> is an independent e-commerce business offering historically inspired apparel and civic merchandise. Like many small businesses, its website needs to do more than look attractive. It needs to be accessible, understandable to search engines, and easy for potential customers to discover.</p>
               <p><strong>98/100 Website Visibility Health score</strong> · 20 technical and content checks</p>
@@ -606,6 +605,12 @@
                 <h4>The takeaway</h4>
                 <p>Even a website scoring 98/100 can have opportunities worth exploring.</p>
                 <p>MM-Promoter helps small businesses understand what their websites are doing well, identify areas for improvement, and move from analysis to practical action—without having to become SEO experts themselves.</p>
+                <h4>See the actual Diagnostic Audit</h4>
+                <p>Explore the full audit findings and the option to have MM-Promoter prepare a proposed fix.</p>
+            <button class="story-audit-preview story-audit-inline" type="button" aria-haspopup="dialog" aria-label="Enlarge A Republic to Keep diagnostic audit screenshot" data-benefit-image="images/artk-diagnostic-stitched.png" data-benefit-title="A Republic to Keep — Diagnostic Audit" data-benefit-description="The actual MM-Promoter diagnostic: a 98/100 website visibility health score, the heading-structure finding, and an option to have MM-Promoter prepare a proposed fix.">
+              <img src="images/artk-diagnostic-stitched.png" alt="Stitched MM-Promoter diagnostic audit for A Republic to Keep showing the 98/100 score, audit findings, and an option to prepare a fix" loading="lazy" decoding="async">
+              <span>Explore the actual audit screenshot ↗</span>
+            </button>
               </details>
             </div>
           </article>
