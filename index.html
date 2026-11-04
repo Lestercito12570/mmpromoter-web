@@ -253,11 +253,12 @@
     .dark-section::after { content: ""; position: absolute; width: 700px; height: 700px; right: -240px; top: -330px; border-radius: 50%; background: radial-gradient(circle, rgba(4, 201, 238, .16), transparent 66%); }
     .dark-section .section-kicker { color: var(--cyan); }
     .dark-section .lede { color: #a8bbce; }
-    .annotation-svg { display: block; width: min(100%, 620px); height: auto; margin-top: 28px; overflow: visible; }
+    .annotation-svg { display: block; width: min(100%, 720px); height: auto; margin-top: 30px; overflow: visible; }
     .annotation-write-reveal { transform-origin: left center; transform-box: fill-box; }
     @media (prefers-reduced-motion: no-preference) {
       .annotation-svg.writing-ready .annotation-write-reveal { transform: scaleX(0); }
-      .annotation-svg.writing-ready.writing-active .annotation-write-reveal { animation: annotation-write 3.8s cubic-bezier(.35, 0, .18, 1) forwards; }
+      .annotation-svg.writing-ready.writing-active .annotation-write-reveal { animation: annotation-write 1.55s steps(48, end) forwards; }
+      .annotation-svg.writing-ready.writing-active .annotation-write-reveal.second-line { animation-delay: 1.55s; }
     }
     @keyframes annotation-write { to { transform: scaleX(1); } }
     .showcase-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: center; }
@@ -473,9 +474,13 @@
           <p class="section-kicker">From insight to action</p>
           <h2>Less figuring things out. More moving forward.</h2>
           <p class="lede">MM-Promoter brings your marketing information together, identifies opportunities worth pursuing, and helps prepare the work to make them happen. You stay in control of what gets approved and put into action.</p>
-          <svg class="annotation-svg" viewBox="0 0 920 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Finally, marketing intelligence that does more than tell you what to do." preserveAspectRatio="xMinYMid meet">
-            <defs><clipPath id="annotation-write-clip"><rect class="annotation-write-reveal" x="0" y="0" width="920" height="100"/></clipPath></defs>
-            <text x="8" y="65" font-family="'Bradley Hand', 'Segoe Print', cursive" font-size="37" font-style="italic" fill="#a8dceb" textLength="880" lengthAdjust="spacingAndGlyphs" clip-path="url(#annotation-write-clip)">Finally, marketing intelligence that does more than tell you what to do.</text>
+          <svg class="annotation-svg" viewBox="0 0 760 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Let MM-Promoter do the heavy lifting so you can focus on your business." preserveAspectRatio="xMinYMid meet">
+            <defs>
+              <clipPath id="annotation-write-clip-first"><rect class="annotation-write-reveal" x="0" y="0" width="760" height="74"/></clipPath>
+              <clipPath id="annotation-write-clip-second"><rect class="annotation-write-reveal second-line" x="0" y="74" width="760" height="74"/></clipPath>
+            </defs>
+            <text x="8" y="57" font-family="'Bradley Hand', 'Segoe Print', cursive" font-size="52" font-style="italic" fill="#b8f1ff" textLength="720" lengthAdjust="spacing" clip-path="url(#annotation-write-clip-first)">Let MM-Promoter do the heavy lifting</text>
+            <text x="8" y="128" font-family="'Bradley Hand', 'Segoe Print', cursive" font-size="52" font-style="italic" fill="#b8f1ff" textLength="695" lengthAdjust="spacing" clip-path="url(#annotation-write-clip-second)">so you can focus on your business.</text>
           </svg>
         </div>
         <figure class="product-frame" id="strategic-command-example">
