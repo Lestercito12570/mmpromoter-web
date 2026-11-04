@@ -254,18 +254,12 @@
     .dark-section .section-kicker { color: var(--cyan); }
     .dark-section .lede { color: #a8bbce; }
     .annotation-svg { display: block; width: min(100%, 720px); height: auto; margin-top: 30px; overflow: visible; }
-    .annotation-write-reveal { transform-origin: left center; transform-box: fill-box; }
-    @media (prefers-reduced-motion: no-preference) {
-      .annotation-svg.writing-ready .annotation-write-reveal { transform: scaleX(0); }
-      .annotation-svg.writing-ready.writing-active .annotation-write-reveal { animation: annotation-write 1.55s steps(48, end) forwards; }
-      .annotation-svg.writing-ready.writing-active .annotation-write-reveal.second-line { animation-delay: 1.55s; }
-    }
-    @keyframes annotation-write { to { transform: scaleX(1); } }
+    .annotation-write-reveal { width: 760px; }
     .showcase-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: center; }
     .product-frame { margin: 0; padding: 15px; border: 1px solid rgba(255,255,255,.15); border-radius: 27px; background: rgba(255,255,255,.05); box-shadow: 0 35px 80px rgba(0,0,0,.25); }
     .product-visual { display: block; width: 100%; height: auto; border-radius: 18px; }
     .product-visual-wrap { position: relative; overflow: hidden; border-radius: 18px; }
-    .product-visual-wrap::after { content: ""; position: absolute; top: 0; left: 0; width: 6.8%; height: 3.3%; background: #10101c; pointer-events: none; }
+
     .product-caption { margin: 13px 8px 2px; color: #9eb3c7; font-size: .82rem; text-align: center; }
     .video-placeholder { height: 100%; min-height: 390px; display: grid; place-items: center; border: 1px dashed rgba(255,255,255,.33); border-radius: 18px; background: linear-gradient(145deg, rgba(255,255,255,.05), rgba(4,201,238,.05)); text-align: center; }
     .play { width: 72px; height: 72px; display: grid; place-items: center; margin: 0 auto 18px; border-radius: 50%; background: var(--cyan); color: var(--ink); font-size: 1.35rem; box-shadow: 0 0 0 10px rgba(4,201,238,.1); }
@@ -631,17 +625,41 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
     const handwriting = document.querySelector('.annotation-svg');
-    if (handwriting && window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
-      handwriting.classList.add('writing-ready');
-      const writingObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            handwriting.classList.add('writing-active');
-            writingObserver.unobserve(handwriting);
-          }
-        });
-      }, { threshold: 0.4 });
-      writingObserver.observe(handwriting);
+    if (handwriting && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const first = handwriting.querySelector('#annotation-write-clip-first rect');
+      const second = handwriting.querySelector('#annotation-write-clip-second rect');
+      if (first && second) {
+        // SVG width attributes are updated directly: Safari does not reliably animate clipPath transforms.
+        first.setAttribute('width', '0');
+        second.setAttribute('width', '0');
+        let started = false;
+        const runHandwriting = () => {
+          if (started) return;
+          started = true;
+          const startTime = performance.now();
+          const lineDuration = 1500;
+          const draw = (now) => {
+            const elapsed = now - startTime;
+            const firstProgress = Math.min(1, Math.max(0, elapsed / lineDuration));
+            const secondProgress = Math.min(1, Math.max(0, (elapsed - lineDuration) / lineDuration));
+            first.setAttribute('width', String(760 * firstProgress));
+            second.setAttribute('width', String(760 * secondProgress));
+            if (secondProgress < 1) requestAnimationFrame(draw);
+          };
+          requestAnimationFrame(draw);
+        };
+        if ('IntersectionObserver' in window) {
+          const writingObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+              runHandwriting();
+              writingObserver.disconnect();
+            }
+          }, { threshold: 0.35 });
+          writingObserver.observe(handwriting);
+        } else {
+          runHandwriting();
+        }
+      }
     }
   </script>
 </body>
