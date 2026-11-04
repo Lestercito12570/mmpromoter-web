@@ -387,11 +387,30 @@
     .diagnostic-box .section-kicker { color: var(--cyan); }
     .diagnostic-box h2 { font-size: clamp(2.2rem, 4.7vw, 4.8rem); }
     .diagnostic-box p { max-width: 620px; color: #b7c8d8; }
-    .report-preview { padding: 22px; border: 1px solid rgba(255,255,255,.15); border-radius: 19px; background: rgba(255,255,255,.07); }
-    .report-line { height: 11px; margin: 12px 0; border-radius: 8px; background: rgba(255,255,255,.12); }
-    .report-line.cyan { width: 64%; background: var(--cyan); }
-    .report-line.short { width: 76%; }
-    .report-preview small { color: #9fb3c7; }
+    .report-preview { padding: 22px; border: 1px solid rgba(255,255,255,.18); border-radius: 19px; background: #1e2d40; color: #fff; width: 100%; text-align: left; cursor: zoom-in; font: inherit; transition: border-color .2s, transform .2s; }
+    .report-preview:hover, .report-preview:focus-visible { border-color: #04c9ee; transform: translateY(-2px); }
+    .report-preview:focus-visible { outline: 3px solid #04c9ee; outline-offset: 3px; }
+    .lite-report { color: #fff; }
+    .lite-report-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 13px; }
+    .lite-report-head small { font-size: .68rem; letter-spacing: .08em; color: #a8bdd0; font-weight: 800; }
+    .lite-report-tag { padding: 5px 9px; border-radius: 99px; color: #b5f6dc; background: rgba(60,205,153,.13); font-size: .65rem; font-weight: 800; }
+    .lite-report-score { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
+    .lite-report-score strong { color: #04c9ee; font-size: clamp(3rem, 5vw, 4.4rem); line-height: 1; }
+    .lite-report-score span { color: #a8bdd0; font-size: .85rem; }
+    .lite-report-row { margin: 10px 0; }
+    .lite-report-row-label { display: flex; justify-content: space-between; gap: 12px; font-size: .78rem; margin-bottom: 5px; }
+    .lite-report-row-label strong { white-space: nowrap; }
+    .lite-report-track { height: 6px; border-radius: 99px; background: rgba(255,255,255,.14); overflow: hidden; }
+    .lite-report-fill { height: 100%; border-radius: inherit; background: #04c9ee; }
+    .lite-report-note { margin: 16px 0 0; color: #a8bdd0 !important; font-size: .72rem; line-height: 1.5; }
+    .lite-report-hint { display: block; margin-top: 12px; color: #8ceaff; font-size: .75rem; font-weight: 800; }
+    .lite-report-dialog { width: min(680px, calc(100% - 32px)); max-height: calc(100dvh - 40px); overflow: auto; padding: 30px; border: 1px solid #3d5c78; border-radius: 22px; background: #1e2d40; color: #fff; box-shadow: 0 25px 80px rgba(0,0,0,.45); }
+    .lite-report-dialog::backdrop { background: rgba(4,12,28,.83); }
+    .lite-report-dialog .lite-report-score strong { font-size: 5rem; }
+    .lite-report-dialog .lite-report-row-label { font-size: 1rem; }
+    .lite-report-dialog .lite-report-row { margin: 18px 0; }
+    .lite-report-close { float: right; padding: 8px 13px; margin: -8px -8px 14px 14px; border: 1px solid #8ceaff; border-radius: 9px; color: #fff; background: transparent; cursor: pointer; }
+    .lite-report-close:focus-visible { outline: 3px solid #04c9ee; }
     .diagnostic-box .button-primary { border-color: var(--cyan); background: var(--cyan); color: var(--ink); }
 
     .faq-list { max-width: 860px; margin-top: 45px; }
@@ -735,11 +754,11 @@
             <p>Get a quick, free look at your website’s visibility, discoverability, and potential marketing opportunities. Diagnostic Lite offers an introductory assessment; MM-Promoter’s full diagnostic goes deeper inside the application.</p>
             <a class="button button-primary" href="/diagnostic/">Run my free Diagnostic Lite <span aria-hidden="true">→</span></a>
           </div>
-          <div class="report-preview">
-            <small>YOUR OPPORTUNITY REPORT</small>
-            <div class="report-line cyan"></div><div class="report-line"></div><div class="report-line short"></div><div class="report-line"></div>
-            <span class="placeholder-flag">Add real sample report preview</span>
-          </div>
+          <button class="report-preview" type="button" aria-haspopup="dialog" aria-controls="lite-report-dialog" onclick="document.getElementById('lite-report-dialog').showModal()"><div class="lite-report"><div class="lite-report-head"><small>DIAGNOSTIC LITE · REAL SAMPLE RESULT</small><span class="lite-report-tag">Strong foundation</span></div><div class="lite-report-score"><strong>89</strong><span>/ 100 Visibility Health</span></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Technical Accessibility</span><strong>25/25</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:100%"></div></div></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Search & Page Clarity</span><strong>18/25</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:72%"></div></div></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Business & Entity Understanding</span><strong>20/20</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:100%"></div></div></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Discovery & Sharing Signals</span><strong>16/20</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:80%"></div></div></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Content & Experience Quality</span><strong>10/10</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:100%"></div></div></div><p class="lite-report-note">Example from an actual Diagnostic Lite assessment. Results vary by website.</p></div><span class="lite-report-hint">Click to enlarge ↗</span></button>
+          <dialog class="lite-report-dialog" id="lite-report-dialog" aria-label="Expanded Diagnostic Lite sample report">
+            <button class="lite-report-close" type="button" onclick="this.closest('dialog').close()">Close ✕</button>
+            <div class="lite-report"><div class="lite-report-head"><small>DIAGNOSTIC LITE · REAL SAMPLE RESULT</small><span class="lite-report-tag">Strong foundation</span></div><div class="lite-report-score"><strong>89</strong><span>/ 100 Visibility Health</span></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Technical Accessibility</span><strong>25/25</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:100%"></div></div></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Search & Page Clarity</span><strong>18/25</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:72%"></div></div></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Business & Entity Understanding</span><strong>20/20</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:100%"></div></div></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Discovery & Sharing Signals</span><strong>16/20</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:80%"></div></div></div><div class="lite-report-row"><div class="lite-report-row-label"><span>Content & Experience Quality</span><strong>10/10</strong></div><div class="lite-report-track"><div class="lite-report-fill" style="width:100%"></div></div></div><p class="lite-report-note">Example from an actual Diagnostic Lite assessment. Results vary by website.</p><p class="lite-report-note"><strong>What deserves your attention:</strong> No major priorities were identified in this sample. Your results may highlight different opportunities.</p></div>
+          </dialog>
         </div>
       </div>
     </section>
