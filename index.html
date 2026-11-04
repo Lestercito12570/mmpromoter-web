@@ -350,7 +350,8 @@
     .story-link { font-weight: 800; text-decoration: none; }
 
     .founder-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 80px; align-items: center; }
-    .portrait-placeholder { aspect-ratio: 4 / 5; display: grid; place-items: center; padding: 34px; border: 1px dashed #aab9c5; border-radius: 30px 30px 80px 30px; background: linear-gradient(155deg, #e4f3f7, #fff); color: #63758a; text-align: center; }
+    .founder-portrait { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 30px 30px 80px 30px; background: #e4f3f7; box-shadow: 0 24px 60px rgba(18,42,63,.13); }
+    .founder-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
     .founder-quote { margin: 30px 0; padding-left: 25px; border-left: 4px solid var(--cyan); color: var(--ink-soft); font-size: 1.24rem; }
     .founder-signoff { color: var(--muted); font-size: .9rem; }
 
@@ -659,14 +660,13 @@
 
     <section class="section" id="about">
       <div class="shell founder-grid reveal">
-        <div class="portrait-placeholder"><div><span class="asset-icon">◯</span><strong>Founder photo or 60–90 second video</strong><br><small>Warm, direct, and working—not a formal corporate portrait.</small></div></div>
+        <figure class="founder-portrait"><img src="images/founder-linkedin-portrait.jpg" alt="Portrait of MM-Promoter founder Lester Morris" loading="lazy" width="800" height="1000"></figure>
         <div>
           <p class="section-kicker">Why I built it</p>
           <h2>Made inside a small business—not a conference room.</h2>
           <p class="lede">I was trying to manage marketing for my businesses across too many platforms and in too many different ways. It was confusing, overwhelming, and disorganized. I needed to bring everything together into something I could actually manage—and I still had no clear answer to the question, “What do I do next?” So I built MM Promoter.</p>
           <p class="founder-quote">“Small businesses need less chaos and fewer distractions. They need clarity—to know what matters, take action, and learn from the results.”</p>
           <p class="founder-signoff"><strong>Lester Morris</strong><br>Builder of MM Promoter and owner of Garden Shed Clay LLC</p>
-          <span class="placeholder-flag">Review founder wording + add photo/video</span>
         </div>
       </div>
     </section>
