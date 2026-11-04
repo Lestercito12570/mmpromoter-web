@@ -355,10 +355,30 @@
     .founder-quote { margin: 30px 0; padding-left: 25px; border-left: 4px solid var(--cyan); color: var(--ink-soft); font-size: 1.24rem; }
     .founder-signoff { color: var(--muted); font-size: .9rem; }
 
-    .integrations { background: var(--mist); }
-    .integration-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 44px; }
-    .integration { min-height: 105px; display: grid; place-items: center; padding: 16px; border: 1px solid var(--line); border-radius: 16px; background: #fff; color: var(--ink-soft); font-size: .85rem; font-weight: 800; text-align: center; }
-    .integration.pending { border-style: dashed; color: var(--muted); }
+    .integrations { position: relative; overflow: hidden; background: linear-gradient(125deg, #0b1a2d 0%, #102e66 53%, #0c2350 100%); color: #fff; }
+    .integrations::before { content: ""; position: absolute; width: 650px; height: 650px; right: -230px; top: -290px; border-radius: 50%; background: radial-gradient(circle, rgba(4,201,238,.2), transparent 70%); pointer-events: none; }
+    .integrations .shell { position: relative; z-index: 1; }
+    .integrations .section-kicker { color: #8ceaff; }
+    .integrations h2 { color: #fff; max-width: 1000px; }
+    .integrations .lede { color: #d9e8ff; max-width: 900px; }
+    .signal-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 42px; }
+    .signal-card { padding: 28px; border: 1px solid rgba(174,224,255,.27); border-radius: 22px; background: rgba(255,255,255,.085); box-shadow: 0 16px 34px rgba(3,12,35,.13); }
+    .signal-icon { width: 58px; height: 58px; display: grid; place-items: center; margin-bottom: 22px; border-radius: 16px; color: #0b1a2d; background: #8ceaff; }
+    .signal-card:nth-child(2) .signal-icon { background: #ff9c91; }
+    .signal-card:nth-child(3) .signal-icon { background: #c6b5ff; }
+    .signal-icon svg { width: 31px; height: 31px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .signal-card h3 { color: #fff; margin: 0 0 9px; font-size: 1.24rem; }
+    .signal-card p { margin: 0; color: #d7e7fb; font-size: .96rem; line-height: 1.6; }
+    .signal-connector { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 24px auto; color: #8ceaff; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: .72rem; }
+    .signal-connector::before, .signal-connector::after { content: ""; width: min(18%, 120px); height: 1px; background: rgba(140,234,255,.45); }
+    .signal-hub { display: flex; align-items: center; gap: 24px; padding: 30px 36px; border: 1px solid rgba(140,234,255,.5); border-radius: 24px; background: linear-gradient(115deg, rgba(4,201,238,.2), rgba(255,255,255,.075)); box-shadow: 0 20px 50px rgba(0,9,28,.18); }
+    .signal-hub-icon { flex: 0 0 74px; height: 74px; display: grid; place-items: center; border-radius: 21px; background: #04c9ee; color: #0b1a2d; }
+    .signal-hub-icon svg { width: 42px; height: 42px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .signal-hub h3 { color: #fff; margin: 0 0 6px; font-size: clamp(1.3rem, 2.2vw, 1.8rem); }
+    .signal-hub p { color: #e0edff; margin: 0; }
+    .signal-results { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
+    .signal-results span { padding: 7px 12px; border: 1px solid rgba(140,234,255,.4); border-radius: 999px; color: #d8f8ff; font-size: .77rem; font-weight: 800; }
+    @media (max-width: 760px) { .signal-grid { grid-template-columns: 1fr; } .signal-hub { flex-direction: column; align-items: flex-start; padding: 26px; } .signal-card { padding: 24px; } }
 
     .diagnostic-box { position: relative; overflow: hidden; padding: 70px; border-radius: 34px; background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff; box-shadow: 0 32px 80px rgba(11, 26, 45, .2); }
     .diagnostic-box::after { content: ""; position: absolute; width: 420px; height: 420px; right: -130px; bottom: -240px; border-radius: 50%; background: var(--cyan); opacity: .14; }
@@ -671,24 +691,36 @@
       </div>
     </section>
 
-    <section class="section integrations">
+    <section class="section integrations" aria-labelledby="signals-heading">
       <div class="shell reveal">
-        <p class="section-kicker">The signals behind the decisions</p>
-        <h2>Bring the useful evidence together.</h2>
-        <p class="lede">Replace this working inventory with approved names and official marks once every live connection and data source is confirmed.</p>
-        <div class="integration-grid">
-          <div class="integration">Google Analytics 4</div>
-          <div class="integration">Instagram</div>
-          <div class="integration">Facebook</div>
-          <div class="integration">CSV imports</div>
-          <div class="integration">Search signals</div>
-          <div class="integration">Competitor research</div>
-          <div class="integration">AI visibility</div>
-          <div class="integration">Campaign data</div>
-          <div class="integration pending">Official logos</div>
-          <div class="integration pending">Additional source</div>
-          <div class="integration pending">Additional source</div>
-          <div class="integration pending">Coming soon</div>
+        <p class="section-kicker">The intelligence behind your marketing</p>
+        <h2 id="signals-heading">Your marketing tells a bigger story. MM-Promoter connects the dots.</h2>
+        <p class="lede">Your website, social channels, campaigns, search visibility, and competitive landscape all provide valuable clues. MM-Promoter brings those signals together to help you understand what's working, spot opportunities, and decide what to do next.</p>
+        <div class="signal-grid">
+          <article class="signal-card">
+            <div class="signal-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M4 16h24M16 4c-4 4-6 8-6 12s2 8 6 12M16 4c4 4 6 8 6 12s-2 8-6 12"/></svg></div>
+            <h3>Website &amp; Search</h3>
+            <p>Understand traffic, search performance, and how discoverable your business is—including AI visibility.</p>
+          </article>
+          <article class="signal-card">
+            <div class="signal-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 19v-6l15-7v20L5 19ZM20 12l6-3v14l-6-3M9 21l3 7h5l-3-9M27 5l2-2M27 27l2 2"/></svg></div>
+            <h3>Social &amp; Campaigns</h3>
+            <p>See how content, engagement, and campaign activity contribute to your marketing goals.</p>
+          </article>
+          <article class="signal-card">
+            <div class="signal-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 26h24M7 22V13M14 22V7M21 22v-5M27 22V11M5 8l8-4 8 7 6-5"/></svg></div>
+            <h3>Market Intelligence</h3>
+            <p>Connect competitor research, market signals, and emerging opportunities to your next move.</p>
+          </article>
+        </div>
+        <div class="signal-connector" aria-hidden="true">Connected intelligence ↓</div>
+        <div class="signal-hub">
+          <div class="signal-hub-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="6"/><circle cx="9" cy="11" r="4"/><circle cx="39" cy="11" r="4"/><circle cx="9" cy="37" r="4"/><circle cx="39" cy="37" r="4"/><path d="M12 14l8 7M36 14l-8 7M12 34l8-7M36 34l-8-7"/></svg></div>
+          <div>
+            <h3>MM-Promoter Intelligence</h3>
+            <p>One connected picture of your marketing—turned into clearer priorities and useful work prepared for you.</p>
+            <div class="signal-results" aria-label="What MM-Promoter helps you do"><span>Understand</span><span>Recommend</span><span>Prepare</span><span>Measure</span></div>
+          </div>
         </div>
       </div>
     </section>
