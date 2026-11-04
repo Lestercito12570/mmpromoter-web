@@ -279,13 +279,14 @@
     .stories { background: #fff; }
     .story-head { display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 50px; }
     .story-head .lede { max-width: 430px; margin-bottom: 4px; }
-    .story-grid { display: grid; grid-template-columns: 1.2fr .9fr .9fr; gap: 20px; }
+    .story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
     .story-card { overflow: hidden; border: 1px solid var(--line); border-radius: 23px; background: var(--paper); }
     .story-image { min-height: 230px; display: grid; place-items: center; padding: 24px; border-bottom: 1px dashed #b7c4ce; background: linear-gradient(145deg, #edf4f7, #f9fbfc); color: #728396; text-align: center; }
     .story-card.featured .story-image { min-height: 290px; }
     .story-image.has-logo { overflow: hidden; padding: 0; border-bottom-style: solid; background: #fff; }
     .story-logo { display: block; width: 100%; height: 230px; object-fit: contain; }
     .story-logo.artk { background: #f8efdc; }
+    .clay-story-visual { background: radial-gradient(circle at 75% 20%, #e8f6f5, transparent 48%), linear-gradient(135deg, #f5eee5, #e6eef2); color: #536d7e; }
     .asset-icon { font-size: 1.8rem; display: block; margin-bottom: 9px; }
     .story-copy { padding: 25px; }
     .story-type { color: var(--cyan-dark); font-size: .72rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
@@ -518,6 +519,10 @@
           <article class="story-card">
             <div class="story-image has-logo"><img class="story-logo artk" src="images/a-republic-to-keep-logo.webp" alt="A Republic to Keep Philadelphia logo" width="1024" height="1024" loading="lazy"></div>
             <div class="story-copy"><span class="story-type">Visibility story</span><h3>Finding where discovery was—and wasn't—happening.</h3><p>Placeholder for the organic-traffic insight, visibility weakness, recommended action, and outcome.</p><span class="placeholder-flag">Add story + evidence</span></div>
+          </article>
+          <article class="story-card">
+            <div class="story-image clay-story-visual" aria-hidden="true"><div><span class="asset-icon">◉</span><strong>Clay Studio Manager</strong><br><small>From a new product to a marketing starting point</small></div></div>
+            <div class="story-copy"><span class="story-type">Getting started story</span><h3>A great product. No marketing playbook. Where do you begin?</h3><p>Clay Studio Manager explores the challenge facing a new product without an established marketing strategy. MM-Promoter can help identify where to start, recommend practical next steps, and prepare marketing activities for the owner to review and approve.</p><span class="placeholder-flag">Document first actions + real results</span></div>
           </article>
         </div>
       </div>
