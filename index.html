@@ -225,6 +225,12 @@
     .fragment-label { display: block; margin-bottom: 3px; color: var(--fragment-color); font-size: .68rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
     .fragment-finding { display: block; color: var(--ink); font-size: .83rem; font-weight: 800; line-height: 1.25; }
 
+    .audience-section { background: #122238; color: #fff; padding: 76px 0 82px; }
+    .audience-inner { max-width: 1050px; text-align: center; }
+    .audience-kicker { margin: 0 0 20px; color: #65d8ed; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .audience-inner h2 { margin: 0 auto 24px; color: #fff; font-size: clamp(2rem, 4vw, 3.7rem); line-height: 1.15; letter-spacing: -.035em; }
+    .audience-inner h2 span { color: #ff9388; }
+    .audience-inner > p:last-child { max-width: 760px; margin: 0 auto; color: #e1e8f0; font-size: clamp(1rem, 1.5vw, 1.17rem); line-height: 1.75; }
     .proof-bar { border-block: 1px solid var(--line); background: #fff; }
     .proof-inner { min-height: 92px; display: flex; align-items: center; justify-content: center; gap: 32px; color: var(--muted); font-size: .84rem; text-align: center; }
     .proof-inner strong { color: var(--ink); }
@@ -334,6 +340,7 @@
     @media (max-width: 680px) {
       .shell { width: min(calc(100% - 30px), var(--max)); }
       .section { padding: 78px 0; }
+      .audience-section { padding: 58px 0 64px; }
       .nav-links { gap: 8px; }
       .nav-links a:not(.nav-cta):not(.nav-app) { display: none; }
       .nav-cta, .nav-app { padding: 8px 11px; font-size: .76rem; }
@@ -423,13 +430,13 @@
       </div>
     </header>
 
-    <div class="proof-bar">
-      <div class="shell proof-inner">
-        <span><strong>Built for</strong> owner-led businesses</span><span class="proof-divider"></span>
-        <span><strong>Designed around</strong> evidence, not guesswork</span><span class="proof-divider"></span>
-        <span><strong>Focused on</strong> the next useful action</span>
+    <section class="audience-section" aria-labelledby="audience-heading">
+      <div class="shell audience-inner">
+        <p class="audience-kicker">Who we're here for</p>
+        <h2 id="audience-heading">Built for small businesses.<br><span>Built for the everyday entrepreneur.</span></h2>
+        <p>You don't need a big marketing team or a big budget to compete. MM-Promoter helps you discover opportunities, make smarter decisions, and turn ideas into action—so you can spend more time doing what you love: running your business.</p>
       </div>
-    </div>
+    </section>
 
     <section class="section">
       <div class="shell problem-grid reveal">
