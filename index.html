@@ -264,6 +264,8 @@
     .showcase-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: center; }
     .product-frame { margin: 0; padding: 15px; border: 1px solid rgba(255,255,255,.15); border-radius: 27px; background: rgba(255,255,255,.05); box-shadow: 0 35px 80px rgba(0,0,0,.25); }
     .product-visual { display: block; width: 100%; height: auto; border-radius: 18px; }
+    .product-visual-wrap { position: relative; overflow: hidden; border-radius: 18px; }
+    .product-visual-wrap::after { content: ""; position: absolute; top: 0; left: 0; width: 6.8%; height: 3.3%; background: #10101c; pointer-events: none; }
     .product-caption { margin: 13px 8px 2px; color: #9eb3c7; font-size: .82rem; text-align: center; }
     .video-placeholder { height: 100%; min-height: 390px; display: grid; place-items: center; border: 1px dashed rgba(255,255,255,.33); border-radius: 18px; background: linear-gradient(145deg, rgba(255,255,255,.05), rgba(4,201,238,.05)); text-align: center; }
     .play { width: 72px; height: 72px; display: grid; place-items: center; margin: 0 auto 18px; border-radius: 50%; background: var(--cyan); color: var(--ink); font-size: 1.35rem; box-shadow: 0 0 0 10px rgba(4,201,238,.1); }
@@ -474,17 +476,17 @@
           <p class="section-kicker">From insight to action</p>
           <h2>Less figuring things out. More moving forward.</h2>
           <p class="lede">MM-Promoter brings your marketing information together, identifies opportunities worth pursuing, and helps prepare the work to make them happen. You stay in control of what gets approved and put into action.</p>
-          <svg class="annotation-svg" viewBox="0 0 760 148" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Let MM-Promoter do the heavy lifting so you can focus on your business." preserveAspectRatio="xMinYMid meet">
+          <svg class="annotation-svg" viewBox="0 0 760 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Let MM-Promoter do the heavy lifting so you can focus on your business." preserveAspectRatio="xMinYMid meet">
             <defs>
-              <clipPath id="annotation-write-clip-first"><rect class="annotation-write-reveal" x="0" y="0" width="760" height="74"/></clipPath>
-              <clipPath id="annotation-write-clip-second"><rect class="annotation-write-reveal second-line" x="0" y="74" width="760" height="74"/></clipPath>
+              <clipPath id="annotation-write-clip-first"><rect class="annotation-write-reveal" x="0" y="0" width="760" height="84"/></clipPath>
+              <clipPath id="annotation-write-clip-second"><rect class="annotation-write-reveal second-line" x="0" y="84" width="760" height="84"/></clipPath>
             </defs>
-            <text x="8" y="57" font-family="'Bradley Hand', 'Segoe Print', cursive" font-size="52" font-style="italic" fill="#b8f1ff" textLength="720" lengthAdjust="spacing" clip-path="url(#annotation-write-clip-first)">Let MM-Promoter do the heavy lifting</text>
-            <text x="8" y="128" font-family="'Bradley Hand', 'Segoe Print', cursive" font-size="52" font-style="italic" fill="#b8f1ff" textLength="695" lengthAdjust="spacing" clip-path="url(#annotation-write-clip-second)">so you can focus on your business.</text>
+            <text x="8" y="58" font-family="'Bradley Hand', 'Segoe Print', cursive" font-size="45" font-style="italic" fill="#b8f1ff" textLength="680" lengthAdjust="spacing" clip-path="url(#annotation-write-clip-first)">Let MM-Promoter do the heavy lifting</text>
+            <text x="8" y="143" font-family="'Bradley Hand', 'Segoe Print', cursive" font-size="45" font-style="italic" fill="#b8f1ff" textLength="660" lengthAdjust="spacing" clip-path="url(#annotation-write-clip-second)">so you can focus on your business.</text>
           </svg>
         </div>
         <figure class="product-frame" id="strategic-command-example">
-          <img class="product-visual" src="images/Command%20Centre%20Main.png" alt="MM-Promoter Command Centre showing a prioritized Briefing and colorful intelligence highlights for AEO visibility, competitors, website diagnostics, opportunities, search, authority, and social performance" width="1714" height="863" loading="lazy">
+          <div class="product-visual-wrap"><img class="product-visual" src="images/Command%20Centre%20Main.png" alt="MM-Promoter Command Centre showing a prioritized Briefing and colorful intelligence highlights for AEO visibility, competitors, website diagnostics, opportunities, search, authority, and social performance" width="1714" height="863" loading="lazy"></div>
           <figcaption class="product-caption">Your marketing priorities, opportunities, and next steps—all in one place.</figcaption>
         </figure>
       </div>
