@@ -270,7 +270,8 @@
     .outcomes { background: var(--mist); }
     .outcome-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
     .outcome-card { min-height: 310px; padding: 30px; border: 1px solid var(--line); border-radius: 22px; background: #fff; }
-    .outcome-number { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 44px; border-radius: 14px; background: var(--ink); color: var(--cyan); font-weight: 850; }
+    .outcome-icon { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 44px; border-radius: 14px; background: #f7b0a2; color: var(--ink); }
+    .outcome-icon svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .outcome-card p { color: var(--muted); }
 
     .how-electric {
@@ -514,11 +515,11 @@
     <section class="section outcomes">
       <div class="shell reveal">
         <p class="section-kicker">What you get</p>
-        <h2>A clear next step every week—not more marketing information to sort through.</h2>
+        <h2>Clear direction on what works for your business.</h2>
         <div class="outcome-grid">
-          <article class="outcome-card"><div class="outcome-number">01</div><h3>Know where to focus</h3><p>See which marketing opportunity deserves attention now and which tasks can wait.</p></article>
-          <article class="outcome-card"><div class="outcome-number">02</div><h3>Understand why</h3><p>Review the evidence, competitive context, and reasoning behind each recommendation.</p></article>
-          <article class="outcome-card"><div class="outcome-number">03</div><h3>Learn what worked</h3><p>Connect actions to results so the next recommendation becomes better informed.</p></article>
+          <article class="outcome-card"><div class="outcome-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div><h3>Know where to focus</h3><p>See which marketing opportunity deserves attention now and which tasks can wait.</p></article>
+          <article class="outcome-card"><div class="outcome-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M8 14a7 7 0 1 1 8 0c-1 1-1 2-1 4H9c0-2 0-3-1-4Z"/></svg></div><h3>Understand why</h3><p>Review the evidence, competitive context, and reasoning behind each recommendation.</p></article>
+          <article class="outcome-card"><div class="outcome-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 20V4M3 20h18M7 15l5-5 4 3 5-7M17 6h4v4"/></svg></div><h3>Understand the impact</h3><p>See how your marketing efforts influence results, identify what’s working, and use those insights to make smarter decisions.</p></article>
         </div>
       </div>
     </section>
