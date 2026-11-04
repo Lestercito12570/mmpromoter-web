@@ -253,6 +253,13 @@
     .dark-section::after { content: ""; position: absolute; width: 700px; height: 700px; right: -240px; top: -330px; border-radius: 50%; background: radial-gradient(circle, rgba(4, 201, 238, .16), transparent 66%); }
     .dark-section .section-kicker { color: var(--cyan); }
     .dark-section .lede { color: #a8bbce; }
+    .annotation-svg { display: block; width: min(100%, 620px); height: auto; margin-top: 28px; overflow: visible; }
+    .annotation-write-reveal { transform-origin: left center; transform-box: fill-box; }
+    @media (prefers-reduced-motion: no-preference) {
+      .annotation-svg.writing-ready .annotation-write-reveal { transform: scaleX(0); }
+      .annotation-svg.writing-ready.writing-active .annotation-write-reveal { animation: annotation-write 3.8s cubic-bezier(.35, 0, .18, 1) forwards; }
+    }
+    @keyframes annotation-write { to { transform: scaleX(1); } }
     .showcase-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: center; }
     .product-frame { margin: 0; padding: 15px; border: 1px solid rgba(255,255,255,.15); border-radius: 27px; background: rgba(255,255,255,.05); box-shadow: 0 35px 80px rgba(0,0,0,.25); }
     .product-visual { display: block; width: 100%; height: auto; border-radius: 18px; }
@@ -463,14 +470,17 @@
     <section class="section dark-section" id="product-demo">
       <div class="shell showcase-grid reveal">
         <div>
-          <p class="section-kicker">See the decision, not just the data</p>
-          <h2>From scattered signals to one clear plan.</h2>
-          <p class="lede">MM Promoter identifies the strongest opportunity, shows the evidence behind it, helps turn it into action, and measures what happened next.</p>
-          <p class="annotation">Here's where all that information becomes useful.</p>
+          <p class="section-kicker">From insight to action</p>
+          <h2>Less figuring things out. More moving forward.</h2>
+          <p class="lede">MM-Promoter brings your marketing information together, identifies opportunities worth pursuing, and helps prepare the work to make them happen. You stay in control of what gets approved and put into action.</p>
+          <svg class="annotation-svg" viewBox="0 0 920 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Finally, marketing intelligence that does more than tell you what to do." preserveAspectRatio="xMinYMid meet">
+            <defs><clipPath id="annotation-write-clip"><rect class="annotation-write-reveal" x="0" y="0" width="920" height="100"/></clipPath></defs>
+            <text x="8" y="65" font-family="'Bradley Hand', 'Segoe Print', cursive" font-size="37" font-style="italic" fill="#a8dceb" textLength="880" lengthAdjust="spacingAndGlyphs" clip-path="url(#annotation-write-clip)">Finally, marketing intelligence that does more than tell you what to do.</text>
+          </svg>
         </div>
         <figure class="product-frame" id="strategic-command-example">
           <img class="product-visual" src="images/mm-promoter-strategic-command-clear-next-step.webp" alt="MM Promoter Strategic Command answering what to focus on first with a clear recommendation, explanation, and next action" width="1740" height="904" loading="lazy">
-          <figcaption class="product-caption">Ask a simple question. Get a clear recommendation, the reason behind it, and a useful next step.</figcaption>
+          <figcaption class="product-caption">Your marketing priorities, opportunities, and next steps—all in one place.</figcaption>
         </figure>
       </div>
     </section>
@@ -613,6 +623,19 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+    const handwriting = document.querySelector('.annotation-svg');
+    if (handwriting && window.matchMedia('(prefers-reduced-motion: no-preference)').matches && 'IntersectionObserver' in window) {
+      handwriting.classList.add('writing-ready');
+      const writingObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            handwriting.classList.add('writing-active');
+            writingObserver.unobserve(handwriting);
+          }
+        });
+      }, { threshold: 0.4 });
+      writingObserver.observe(handwriting);
+    }
   </script>
 </body>
 </html>
