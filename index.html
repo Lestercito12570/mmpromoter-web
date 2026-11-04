@@ -331,6 +331,15 @@
     .clay-story-visual { background: radial-gradient(circle at 75% 20%, #e8f6f5, transparent 48%), linear-gradient(135deg, #f5eee5, #e6eef2); color: #536d7e; }
     .asset-icon { font-size: 1.8rem; display: block; margin-bottom: 9px; }
     .story-copy { padding: 25px; }
+    .story-audit-preview { display: block; width: 100%; padding: 12px; border: 0; border-bottom: 1px solid var(--line); background: #f3f6fa; cursor: zoom-in; color: var(--ink-soft); text-align: center; }
+    .story-audit-preview img { display: block; width: 100%; height: 230px; object-fit: contain; object-position: top center; border-radius: 8px; }
+    .story-audit-preview span { display: block; padding-top: 8px; font-size: .8rem; font-weight: 750; }
+    .story-audit-preview:hover span, .story-audit-preview:focus-visible span { text-decoration: underline; }
+    .story-audit-preview:focus-visible { outline: 3px solid var(--cyan-dark); outline-offset: -3px; }
+    .story-details { margin-top: 16px; }
+    .story-details summary { cursor: pointer; font-weight: 800; color: var(--cyan-dark); }
+    .story-details h4 { margin: 18px 0 7px; }
+    .story-details p { margin-bottom: 12px; }
     .story-type { color: var(--cyan-dark); font-size: .72rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
     .story-copy h3 { margin: 12px 0 9px; }
     .story-copy p { color: var(--muted); font-size: .91rem; }
@@ -573,8 +582,32 @@
               </blockquote></div>
           </article>
           <article class="story-card">
-            <div class="story-image has-logo"><img class="story-logo artk" src="images/a-republic-to-keep-logo.webp" alt="A Republic to Keep Philadelphia logo" width="1024" height="1024" loading="lazy"></div>
-            <div class="story-copy"><span class="story-type">Visibility story</span><h3>Finding where discovery was—and wasn't—happening.</h3><p>Placeholder for the organic-traffic insight, visibility weakness, recommended action, and outcome.</p><span class="placeholder-flag">Add story + evidence</span></div>
+            <button class="story-audit-preview" type="button" aria-haspopup="dialog" aria-label="Enlarge A Republic to Keep diagnostic audit screenshot" data-benefit-image="images/artk-diagnostic-stitched.png" data-benefit-title="A Republic to Keep — Diagnostic Audit" data-benefit-description="The actual MM-Promoter diagnostic: a 98/100 website visibility health score, the heading-structure finding, and an option to have MM-Promoter prepare a proposed fix.">
+              <img src="images/artk-diagnostic-stitched.png" alt="Stitched MM-Promoter diagnostic audit for A Republic to Keep showing the 98/100 score, audit findings, and an option to prepare a fix" loading="lazy" decoding="async">
+              <span>Explore the actual audit screenshot ↗</span>
+            </button>
+            <div class="story-copy"><span class="story-type">A Republic to Keep — Website Visibility Case Study</span><h3>A strong website. One opportunity to make it even better.</h3>
+              <p><a href="https://arepublictokeep.com" target="_blank" rel="noopener noreferrer">A Republic to Keep</a> is an independent e-commerce business offering historically inspired apparel and civic merchandise. Like many small businesses, its website needs to do more than look attractive. It needs to be accessible, understandable to search engines, and easy for potential customers to discover.</p>
+              <p><strong>98/100 Website Visibility Health score</strong> · 20 technical and content checks</p>
+              <p>The diagnostic found strong technical accessibility, business identity, discovery signals, and content quality, while flagging two homepage H1 headings for review. The audit explained the finding and offered to <strong>“Have MM-Promoter prepare a fix.”</strong></p>
+              <details class="story-details"><summary>Read the full case study</summary>
+                <h4>The challenge</h4>
+                <p>How do you know whether your website is properly configured for search visibility—and what should you improve first? Is Google finding it? Are customers even seeing it?</p>
+                <p>Rather than relying on guesswork, A Republic to Keep used MM-Promoter's Diagnostic Audit to evaluate its website across 20 technical and content checks.</p>
+                <h4>What MM-Promoter discovered</h4>
+                <p>The website earned an impressive <strong>98/100 Website Visibility Health score</strong>, with strong results across technical accessibility, business identity, discovery signals, and content quality.</p>
+                <p>But the audit also identified an opportunity: the homepage contained two primary H1 headings.</p>
+                <p>While multiple H1 headings aren't necessarily a technical error, reviewing the heading structure could help make the page's primary subject and message clearer.</p>
+                <h4>From finding to action</h4>
+                <p>This is where MM-Promoter goes beyond simply reporting a score.</p>
+                <p>The application explained the finding, showed the supporting evidence, and recommended reviewing the page title and headings for clear, specific language.</p>
+                <p>Then it offered something even more useful: <strong>“Have MM-Promoter prepare a fix.”</strong></p>
+                <p>Instead of leaving the business owner to interpret a technical report and figure out the next steps alone, MM-Promoter can help prepare a proposed improvement for review and approval.</p>
+                <h4>The takeaway</h4>
+                <p>Even a website scoring 98/100 can have opportunities worth exploring.</p>
+                <p>MM-Promoter helps small businesses understand what their websites are doing well, identify areas for improvement, and move from analysis to practical action—without having to become SEO experts themselves.</p>
+              </details>
+            </div>
           </article>
           <article class="story-card">
             <div class="story-image clay-story-visual" aria-hidden="true"><div><span class="asset-icon">◉</span><strong>Clay Studio Manager</strong><br><small>From a new product to a marketing starting point</small></div></div>
@@ -686,7 +719,7 @@
     document.querySelectorAll('[data-benefit-image]').forEach((card) => {
       const open = () => {
         previousBenefitFocus = document.activeElement;
-        benefitTitle.textContent = card.querySelector('h3').textContent;
+        benefitTitle.textContent = card.dataset.benefitTitle || card.querySelector('h3').textContent;
         benefitDescription.textContent = card.dataset.benefitDescription || card.querySelector('p').textContent;
         benefitImage.src = card.dataset.benefitImage;
         benefitImage.alt = card.querySelector('img').alt;
